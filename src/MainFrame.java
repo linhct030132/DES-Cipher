@@ -11,9 +11,11 @@
 public class MainFrame extends javax.swing.JFrame {
 
     DesFileEncrypter desFileEncFrame;
+    ThreeDesCipher threeDesFrame;
     public MainFrame() {
         initComponents();
         desFileEncFrame = new DesFileEncrypter();
+        threeDesFrame = new ThreeDesCipher();
     }
 
     /**
@@ -25,11 +27,27 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        desVisable = new javax.swing.JButton();
+        threeDes = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        desVisable.setText("DES Cipher");
+        desVisable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desVisableActionPerformed(evt);
+            }
+        });
+
+        threeDes.setText("3DES Cipher");
+        threeDes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                threeDesActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Menu");
 
@@ -49,11 +67,21 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 246, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(threeDes, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(desVisable, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(desVisable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(threeDes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -63,6 +91,16 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         desFileEncFrame.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void desVisableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desVisableActionPerformed
+        // TODO add your handling code here:
+        desFileEncFrame.setVisible(true);
+    }//GEN-LAST:event_desVisableActionPerformed
+
+    private void threeDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeDesActionPerformed
+        // TODO add your handling code here:
+        threeDesFrame.setVisible(true);
+    }//GEN-LAST:event_threeDesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,8 +138,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton desVisable;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JButton threeDes;
     // End of variables declaration//GEN-END:variables
 }

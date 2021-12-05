@@ -70,7 +70,7 @@ public class DesFileEncrypter extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        setTitle("File ciphering");
+        setTitle("DES Cipher");
         setResizable(false);
 
         jButton1.setText("Encrypt file");
