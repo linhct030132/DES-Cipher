@@ -23,7 +23,6 @@ public class DesFileEncrypter extends javax.swing.JFrame {
         File file = openFile();
         if (file != null) {
             byte[] fileByte = FileR.readFile(file);
-
             String key = keyTextField1.getText();
             byte[] encFileByte = des.encryptFile(fileByte, key);
             displayGuiMessage("File " + file.getName() + " encrypted.", "Done", JOptionPane.INFORMATION_MESSAGE);

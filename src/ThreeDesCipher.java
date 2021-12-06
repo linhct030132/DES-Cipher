@@ -50,8 +50,11 @@ public class ThreeDesCipher extends javax.swing.JFrame {
         key2 = new javax.swing.JTextField();
         genarateKey1 = new javax.swing.JButton();
         genarateKey2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        key3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("3DES Cipher");
 
         encrypt.setText("Encypt");
         encrypt.addActionListener(new java.awt.event.ActionListener() {
@@ -67,13 +70,13 @@ public class ThreeDesCipher extends javax.swing.JFrame {
             }
         });
 
-        key1.setText("75536BB8722AAFDD");
+        key1.setText("770DD5180AC82461");
 
         jLabel1.setText("Key 1:");
 
         jLabel2.setText("Key 2:");
 
-        key2.setText("15C7B0CFBB54E567");
+        key2.setText("75536BB8722AAFDD");
 
         genarateKey1.setText("Gen key 1");
         genarateKey1.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +92,17 @@ public class ThreeDesCipher extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Key 3:");
+
+        key3.setText("15C7B0CFBB54E567");
+
+        jButton1.setText("Gen key 3");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,18 +110,24 @@ public class ThreeDesCipher extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(encrypt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(decrypt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(key1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                            .addComponent(key2)))
-                    .addComponent(genarateKey1)
-                    .addComponent(genarateKey2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2))
+                            .addGap(36, 36, 36)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(encrypt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(decrypt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(key1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                .addComponent(key2)))
+                        .addComponent(genarateKey1)
+                        .addComponent(genarateKey2)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                            .addComponent(key3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton1))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,15 +141,21 @@ public class ThreeDesCipher extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(key1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(genarateKey1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(key2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(genarateKey2)
-                .addGap(7, 7, 7))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(key3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,21 +183,27 @@ public class ThreeDesCipher extends javax.swing.JFrame {
         threeDesDecrypt();
     }//GEN-LAST:event_decryptActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String genKey = des.generateKey(16);
+        key3.setText(genKey);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void threeDesEncrypt() {
         File file = openFile();
         if (file != null) {
             byte[] fileByte = FileR.readFile(file);
-
-            String key = key1.getText();
-            byte[] decFileByte = des.decryptFile(fileByte, key);
-            System.out.println(decFileByte);
-            String key3 = key2.getText();
-            byte[] encFileByte = des.encryptFile(decFileByte, key3);
+            String Key1 = key1.getText();
+            byte[] decFileByte = des.encryptFile(fileByte, Key1);
+            String Key2 = key2.getText();
+            byte[] encFileByte = des.decryptFile(decFileByte, Key2);
+            String Key3 = key3.getText();
+            byte[] result = des.encryptFile(encFileByte, Key3);
             displayGuiMessage("File " + file.getName() + " encrypted.", "Done", JOptionPane.INFORMATION_MESSAGE);
             File encFile = saveFile();
             Path path = encFile.toPath();
             try {
-                Files.write(path, encFileByte);
+                Files.write(path, result);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -183,12 +215,12 @@ public class ThreeDesCipher extends javax.swing.JFrame {
         if (file != null) {
             byte[] fileByte = FileR.readFile(file);
 
+            String Key3 = key3.getText();
+            byte[] decFileByte = des.decryptFile(fileByte, Key3);
             String Key2 = key2.getText();
-            byte[] decFileByte = des.decryptFile(fileByte, Key2);
+            byte[] encFileByte = des.encryptFile(decFileByte, Key2);
             String Key1 = key1.getText();
-            byte[] encFileByte = des.encryptFile(decFileByte, Key1);
-            String Key3 = "770DD5180AC82461";
-            byte[] threeDecFileByte = des.decryptFile(encFileByte, Key3);
+            byte[] threeDecFileByte = des.decryptFile(encFileByte, Key1);
             displayGuiMessage("File " + file.getName() + " encrypted.", "Done", JOptionPane.INFORMATION_MESSAGE);
             File encFile = saveFile();
             Path path = encFile.toPath();
@@ -261,9 +293,12 @@ public class ThreeDesCipher extends javax.swing.JFrame {
     private javax.swing.JButton encrypt;
     private javax.swing.JButton genarateKey1;
     private javax.swing.JButton genarateKey2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField key1;
     private javax.swing.JTextField key2;
+    private javax.swing.JTextField key3;
     // End of variables declaration//GEN-END:variables
 }

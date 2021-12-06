@@ -21,54 +21,6 @@ import java.util.Random;
         return result.toUpperCase();
     }
 
-    //Encrypts hex string
-    public String encrypt(String message, String keyStr) {
-        calculateKeys(keyStr);
-        byte[] inputBlock = hexBlockToByteArray(message);
-        byte[] perInput = permutInput(DesTables.IP, inputBlock);
-
-        byte[] L = Arrays.copyOfRange(perInput, 0, 32);
-        byte[] R = Arrays.copyOfRange(perInput, 32, 64);
-        for (int i = 0; i < 16; i++) {
-            byte[] tempR = Arrays.copyOfRange(R, 0, 32);
-            byte[] currKey = key[i];
-            byte[] fByte = f(R, currKey);
-            byte[] lXorF = xorBitArray(L, fByte);
-
-            //Switch parts (32 bits)
-            L = tempR;
-            R = lXorF;
-        }
-        byte[] outputBit = concatArrays(R, L);
-        byte[] outputBitPerm = permutInput(DesTables.FP, outputBit);
-        String encMessage = bitsToHexString3(outputBitPerm);
-        return encMessage;
-    }
-
-    //Decrytps hex string
-    public String decrypt(String message, String keyStr) {
-        calculateKeys(keyStr);
-        byte[] inputBlock = hexBlockToByteArray(message);
-        byte[] perInput = permutInput(DesTables.IP, inputBlock);
-
-        byte[] L = Arrays.copyOfRange(perInput, 0, 32);
-        byte[] R = Arrays.copyOfRange(perInput, 32, 64);
-        for (int i = 15; i >= 0; i--) {
-            byte[] tempR = Arrays.copyOfRange(R, 0, R.length);
-            byte[] currKey = key[i];
-            byte[] fByte = f(R, currKey);
-            byte[] lXorF = xorBitArray(L, fByte);
-
-            //Switch parts (32 bits)
-            L = tempR;
-            R = lXorF;
-        }
-        byte[] outputBit = concatArrays(R, L);
-        byte[] outputBitPerm = permutInput(DesTables.FP, outputBit);
-        String encMessage = bitsToHexString3(outputBitPerm);
-        return encMessage;
-    }
-
     //Encrypt file
     public byte[] encryptFile(byte[] fileBytes, String keyStr) {
         byte[] fileBit = FileR.byteToBit2(fileBytes); //Converts byte arr to bits arr
@@ -164,16 +116,6 @@ import java.util.Random;
         } else {
             return -1;
         }
-    }
-
-    private boolean elementsFromToEqual(byte[] arr, int start, int end) {
-        for (int i = start; i < end; i++) {
-            if (arr[i] != arr[i + 1]) {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     //fileBits - 64 bits length

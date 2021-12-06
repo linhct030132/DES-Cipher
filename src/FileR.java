@@ -30,6 +30,7 @@ public class FileR {
 
     public static byte[] byteToBit2(byte[] fileByte) {
         int fileByteLength = fileByte.length;
+        System.out.println(fileByteLength);
         byte[] bitArr = new byte[fileByteLength * 8];
         int bitArrPos = 0;
         for (int i = 0; i < fileByteLength; i++) {
